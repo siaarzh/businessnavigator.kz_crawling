@@ -18,7 +18,7 @@ class DbFill(db.DB):
 		try:
 			if charset != "utf-8":
 				data = self._get_data_encode(data, charset)
-			sql = "insert into odt.business_navigator_companyes ("
+			sql = "insert into odt.business_navigator_companies ("
 			param_vals_lst = [ ':{}'.format(i) for i in structure]
 			columns_statement = ', '.join(structure)
 			values_statement = ', '.join(param_vals_lst)
