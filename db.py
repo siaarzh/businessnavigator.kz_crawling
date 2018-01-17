@@ -1,6 +1,10 @@
 import cx_Oracle
 from configparser import ConfigParser
 import logging
+import os
+
+
+os.environ["NLS_LANG"] = ".AL32UTF8" # Для решения конфликта формата казахских символов
 
 class DB:
     """Базовый класс для работы с Oracle"""
