@@ -2,6 +2,7 @@ import bussnavparser
 import dbfill
 from multiprocessing import Pool
 import time
+import os
 
 
 parser = bussnavparser.BusinessNavigatorParser()
@@ -11,9 +12,10 @@ ranges = parser.get_ranges_of_pagin(10)
 
 
 def make_all(rng):
+	print("PID:", os.getpid(), end=" ")
 	print('Обработка страниц пагинации с {} по {} '.format(rng[0], rng[1]))
 	data = parser.get_data_by_pagin_range(rng[0], rng[1])
-	db.fill_main_storage(parser.get_structure(), data, "iso-8859-5")
+	db.fill_main_storage(parser.get_structure(), data, "utf-8")
 	print('Обработка страниц пагинации с {} по {} завершена. '.format(rng[0], rng[1]))
 
 
